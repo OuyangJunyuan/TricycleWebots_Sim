@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/ou/workspace/sim_ros_ws/src/mywebotsdemo/cmake-build-debug/devel/setup.sh

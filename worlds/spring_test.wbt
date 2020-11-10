@@ -1,0 +1,281 @@
+#VRML_SIM R2020b utf8
+WorldInfo {
+  basicTimeStep 1
+}
+Viewpoint {
+  orientation 0.5092567287766158 -0.5576381411956087 -0.6555129958129332 2.0115256351524717
+  position -6.471439450729694 0.6251905090584079 2.4516668682030613
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation 0 0.83 -5.08212e-17
+  rotation 1 0 0 1.5707963267948966
+  floorSize 3 3
+}
+DEF arrow Solid {
+  translation -0.4390199459969463 -142.56206406276672 0.011074047187887046
+  rotation 0.38428786804251286 0.006190887277732926 -0.9231925624646544 -3.0125527166690245
+  children [
+    Solid {
+      translation 0 -0.075 -0.01
+      children [
+        Shape {
+          geometry Box {
+            size 0.01 0.05 0.01
+          }
+        }
+      ]
+      immersionProperties [
+        ImmersionProperties {
+          fluidName "fluid"
+          referenceArea "xyz-projection"
+          dragForceCoefficients 2 2 2
+        }
+      ]
+      boundingObject Shape {
+        geometry Box {
+          size 0.01 0.05 0.01
+        }
+      }
+      physics Physics {
+        density 100
+      }
+    }
+    Solid {
+      translation 0 -0.075 0.01
+      children [
+        Shape {
+          geometry Box {
+            size 0.01 0.05 0.01
+          }
+        }
+      ]
+      name "solid(1)"
+      immersionProperties [
+        ImmersionProperties {
+          fluidName "fluid"
+          referenceArea "xyz-projection"
+          dragForceCoefficients 2 2 2
+        }
+      ]
+      boundingObject Shape {
+        geometry Box {
+          size 0.01 0.05 0.01
+        }
+      }
+      physics Physics {
+        density 100
+      }
+    }
+    Solid {
+      translation 0.01 -0.075 0
+      children [
+        Shape {
+          geometry Box {
+            size 0.01 0.05 0.01
+          }
+        }
+      ]
+      name "solid(2)"
+      immersionProperties [
+        ImmersionProperties {
+          fluidName "fluid"
+          referenceArea "xyz-projection"
+          dragForceCoefficients 2 2 2
+        }
+      ]
+      boundingObject Shape {
+        geometry Box {
+          size 0.01 0.05 0.01
+        }
+      }
+      physics Physics {
+        density 100
+      }
+    }
+    Solid {
+      translation -0.01 -0.075 0
+      children [
+        Shape {
+          geometry Box {
+            size 0.01 0.05 0.01
+          }
+        }
+      ]
+      name "solid(3)"
+      immersionProperties [
+        ImmersionProperties {
+          fluidName "fluid"
+          referenceArea "xyz-projection"
+          dragForceCoefficients 2 2 2
+        }
+      ]
+      boundingObject Shape {
+        geometry Box {
+          size 0.01 0.05 0.01
+        }
+      }
+      physics Physics {
+        density 100
+      }
+    }
+    Connector {
+      translation 0.035 0 0
+      model "arm_cnt"
+      autoLock TRUE
+    }
+    DEF arrow_shape Shape {
+      geometry Cylinder {
+        height 0.2
+        radius 0.005
+      }
+    }
+  ]
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+      referenceArea "xyz-projection"
+      dragForceCoefficients 1.5 1.5 1.5
+    }
+  ]
+  boundingObject USE arrow_shape
+  physics Physics {
+    density 500
+  }
+  linearVelocity 1.8344512774747064e-16 -2.6838590710298904e-17 -6.281210572734512e-16
+  angularVelocity 2.26348411998625e-15 1.538873521997535e-14 2.1692717296980556e-17
+}
+DEF arm Robot {
+  translation -0.6691205289782043 0.11104294858123957 0.0602244254891055
+  rotation 0.13720749652640168 0.056839351090438354 -0.9889102037417631 0.6241741983135327
+  children [
+    Transform {
+      translation 0.07 0.15 0
+      children [
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            position 70258.69625052703
+            axis -1 0 0
+          }
+          device [
+            PositionSensor {
+              name "arm angle sensor"
+            }
+            RotationalMotor {
+              name "arm motor"
+              maxVelocity 100
+            }
+          ]
+          endPoint Solid {
+            translation 0 0.04965144588585975 -0.005893549138128963
+            rotation -0.9999999999999999 0 0 0.11814564489887887
+            children [
+              Connector {
+                translation 0 0.05 0
+                rotation -0.9999999999999999 0 0 1.5707
+                model "arm_cnt"
+                autoLock TRUE
+              }
+              Shape {
+                appearance VarnishedPine {
+                }
+                geometry Cylinder {
+                  height 0.1
+                  radius 0.015
+                }
+              }
+            ]
+            boundingObject Shape {
+              appearance Appearance {
+                texture ImageTexture {
+                  url [
+                    "textures/wood.jpg"
+                  ]
+                }
+              }
+              geometry Cylinder {
+                height 0.1
+                radius 0.015
+              }
+            }
+            physics Physics {
+              density 100
+            }
+            linearVelocity 0.0964161471723658 0.23648696368087802 0.9654048073396618
+            angularVelocity -9.690347688240028 0.674884549464327 2.452653960434918
+          }
+        }
+      ]
+    }
+    DEF BaseLink_Shape Shape {
+      appearance Appearance {
+        texture ImageTexture {
+          url [
+            "textures/wood.jpg"
+          ]
+        }
+      }
+      geometry Cylinder {
+        height 0.3
+        radius 0.05
+      }
+    }
+  ]
+  boundingObject USE BaseLink_Shape
+  physics Physics {
+  }
+  controller "my_controller"
+  controllerArgs [
+    ""
+  ]
+  linearVelocity 0.3836164622841156 0.1864712644662923 0.48208074815333657
+  angularVelocity -0.2883062304300094 -5.984535785777234 1.775008882478387
+}
+SolidPipe {
+  translation 0.13 1.52 -5.00904e-05
+  rotation 1 0 0 1.5707
+  height 0.2
+  radius 0.1
+  thickness 0.01
+}
+Fluid {
+  translation 0 0.76 0
+  density 1.29
+  viscosity 1.5e-05
+  boundingObject Box {
+  }
+}
+Robot {
+  translation 0 -2.05695e-06 1.56
+  rotation 1 0 0 1.5708
+  children [
+    SliderJoint {
+      jointParameters JointParameters {
+      }
+      device [
+        LinearMotor {
+        }
+      ]
+      endPoint Solid {
+        translation 0 -0.3 0
+        children [
+          Shape {
+            geometry Box {
+              size 0.1 0.1 0.1
+            }
+          }
+        ]
+      }
+    }
+    Shape {
+      appearance Parquetry {
+      }
+      geometry Plane {
+      }
+    }
+  ]
+  name "robot(1)"
+}

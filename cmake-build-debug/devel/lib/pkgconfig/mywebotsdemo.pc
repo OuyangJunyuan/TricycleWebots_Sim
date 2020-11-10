@@ -1,0 +1,8 @@
+prefix=/home/ou/workspace/sim_ros_ws/src/mywebotsdemo/cmake-build-debug/devel
+
+Name: mywebotsdemo
+Description: Description of mywebotsdemo
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
