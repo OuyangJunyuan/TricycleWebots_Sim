@@ -113,6 +113,9 @@ catkin_package(
 )
 set(LIB_DIR ${PROJECT_SOURCE_DIR}/lib)
 link_directories(${LIB_DIR})
+#set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/controllers/mywebotsdemo_node)
+#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/controllers/mywebotsdemo_node)
+
 ###########
 ## Build ##
 ###########
@@ -134,6 +137,11 @@ add_executable(${PROJECT_NAME}_node src/tricycle_ros_controller.cpp src/tricycle
 target_link_libraries(${PROJECT_NAME}_node
    ${catkin_LIBRARIES} libCppController.so )
 
+#set_target_properties(
+#        ${PROJECT_NAME}_node
+#        PROPERTIES
+#        RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/controllers/mywebotsdemo_node"
+#)
 # set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
